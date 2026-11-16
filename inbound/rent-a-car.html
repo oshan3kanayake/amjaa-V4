@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rent a car in Sri Lanka — self-drive or with a chauffeur · Amja Tours</title>
+<meta name="description" content="Rent a car in Sri Lanka from Amja Tours — city cars, executive sedans, 4×4s and family vans, self-drive or chauffeur-driven, delivered to your hotel or the airport.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/inbound.css">
+<script>document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},4000)</script>
+</head>
+<body>
+<div class="curtain"><svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
+<div id="layout-top"></div>
+
+<main>
+  <section class="phero">
+    <div class="phero-media"><img src="images/photo/fleet-hero-new.jpg" alt="The Amja fleet lined up at sunset" data-hero-img></div>
+    <div class="phero-in">
+      <div>
+        <p class="eyebrow">Rent a car · <span data-site="brand">Amja Tours</span></p>
+        <h1 class="h-xl" data-split="now">Rent a car. <em>Or a driver who knows the way.</em></h1>
+      </div>
+      <div class="phero-side">
+        <p>From a city run-around to a Land Cruiser for Yala — self-drive, or with one of our chauffeur-guides for the whole trip. Delivered to your hotel or the airport.</p>
+        <div class="phero-scroll"><i></i>Enter the showroom</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- the showroom -->
+  <section class="show has-stars" id="showroom" aria-label="Vehicle showroom"><canvas class="starfield"></canvas>
+    <div class="show-in">
+      <div class="show-top">
+        <div><p class="eyebrow">The showroom</p></div>
+        <div class="chips" id="carChips"></div>
+      </div>
+      <div class="show-stage">
+        <span class="show-ghost" id="carGhost" aria-hidden="true"></span>
+        <div class="spin" id="spin" data-cursor="Drag" aria-label="Vehicle photos — drag sideways to turn">
+          <div class="spin-ui"><div class="dots" id="spinDots"></div><span>⟷ Drag to turn</span></div>
+        </div>
+        <div class="spec" id="spec"></div>
+      </div>
+      <div class="strip" id="strip" aria-label="All vehicles"></div>
+    </div>
+  </section>
+
+  <!-- how it works -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">How renting works</p><h2 class="h-md" data-split>Three messages and <em>you're driving.</em></h2></div></div>
+      <div class="why" data-stagger>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 30h36l-4-10H10z"/><circle cx="14" cy="34" r="4"/><circle cx="34" cy="34" r="4"/></svg><h3>01 · Pick a vehicle</h3><p>Choose a class above. "Or similar" means the same size, comfort and luggage space.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="10" width="32" height="30" rx="3"/><path d="M8 18h32M16 6v8M32 6v8"/></svg><h3>02 · Send your dates</h3><p>Tell us pick-up day, how many days and whether you'd like a chauffeur-guide.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 42s14-12 14-23a14 14 0 0 0-28 0c0 11 14 23 14 23z"/><circle cx="24" cy="19" r="5"/></svg><h3>03 · We bring it to you</h3><p>Hotel, home or the arrivals hall at BIA — the car is waiting, cleaned and fuelled.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 6 8 12v12c0 10 7 16 16 18 9-2 16-8 16-18V12z"/><path d="m17 24 5 5 9-10"/></svg><h3>Insured & supported</h3><p>Comprehensive insurance and a real person on the phone if anything comes up.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- booking -->
+  <section class="sec" id="enquire" style="padding-top:0">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Reserve a vehicle</p>
+        <h2 class="h-md" data-split style="margin-top:18px">Where should we <em>bring the keys?</em></h2>
+        <p class="lead" style="margin-top:22px" data-fade>Rates depend on the vehicle, number of days and whether a chauffeur joins you — we'll confirm the exact price within the hour during office time.</p>
+        <div class="cinfo" data-fade>
+          <a data-site-href="whatsapp" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z" opacity=".9"/></svg></span><span><small>WhatsApp</small><span data-site="phone2"></span></span></a>
+          <a data-site-href="phone" href="#"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small>Call the office</small><span data-site="phone"></span></span></a>
+        </div>
+      </div>
+      <div class="form-card" data-fade>
+        <h3>Car rental enquiry</h3>
+        <p class="muted">Pick a vehicle in the showroom and it lands here automatically.</p>
+        <form class="form" data-enquiry="fleet">
+          <span class="enq-chip" hidden></span>
+          <div class="row"><div class="field"><input name="name" placeholder=" " required><label>Your name</label></div><div class="field"><input name="phone" type="tel" placeholder=" " required><label>Phone / WhatsApp</label></div></div>
+          <div class="row"><div class="field"><input name="email" type="email" placeholder=" "><label>Email</label></div><div class="field"><select name="country"></select></div></div>
+          <div class="row"><div class="field"><input name="pickup_date" type="text" placeholder=" " onfocus="this.type='date'"><label>Pick-up date</label></div><div class="field"><input name="rental_days" type="number" min="1" placeholder=" "><label>Number of days</label></div></div>
+          <div class="row"><div class="field"><input name="pickup_place" placeholder=" "><label>Pick-up place (hotel / airport)</label></div>
+            <div class="field"><select name="driver"><option value="">Self-drive or chauffeur?</option><option>Self-drive</option><option>With chauffeur-guide</option><option>Not sure yet</option></select></div></div>
+          <div class="field"><textarea name="message" placeholder=" "></textarea><label>Route, passengers, child seats…</label></div>
+          <button class="btn btn-lg btn-accent" type="submit">Request this car <span class="arr">→</span></button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="layout-bottom"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/starfield.js"></script>
+<script type="module" src="assets/js/pages/rent.js"></script>
+</body>
+</html>

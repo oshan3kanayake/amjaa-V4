@@ -1,11 +1,13 @@
 {
   "name": "amjaa-travels",
   "version": "1.0.0",
-  "description": "",
+  "description": "Amja Tours (inbound) + Amja Travels (outbound) websites with one shared admin panel on Firebase",
   "main": "index.js",
   "scripts": {
-    "dev": "serve ./public",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sync": "node scripts/sync-shared.mjs",
+    "dev:inbound": "node scripts/sync-shared.mjs && serve inbound -l 5000",
+    "dev:outbound": "node scripts/sync-shared.mjs && serve outbound -l 5001",
+    "deploy": "node scripts/sync-shared.mjs && firebase deploy --only hosting,firestore:rules"
   },
   "keywords": [],
   "author": "",

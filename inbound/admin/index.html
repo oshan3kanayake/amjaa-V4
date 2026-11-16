@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Amja admin — both websites</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<div class="app" id="app" hidden>
+  <aside class="side" id="side">
+    <div class="side-brand">
+      <svg viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg>
+      <div><b>Amja admin</b><small>Tours · Travels</small></div>
+    </div>
+    <nav class="side-nav" id="nav"></nav>
+    <div class="side-foot">
+      <span id="who"></span>
+      <button class="abtn ghost small" id="logout">Sign out</button>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="top">
+      <button class="abtn ghost small menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+      <div><p class="crumb" id="crumb"></p><h1 id="title">Dashboard</h1><p class="muted" id="sub"></p></div>
+      <div class="top-actions" id="topActions"></div>
+    </header>
+    <section id="view" class="view"></section>
+  </main>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true">
+    <header class="sheet-head"><h2 id="mTitle">Edit</h2><button class="x" id="mClose" aria-label="Close">✕</button></header>
+    <div class="sheet-body" id="mBody"></div>
+    <footer class="sheet-foot" id="mFoot"></footer>
+  </div>
+</div>
+<div class="confirm" id="confirm" hidden><div class="confirm-card"><h3 id="cTitle"></h3><p id="cMsg"></p><div class="row"><button class="abtn ghost" id="cNo">Cancel</button><button class="abtn danger" id="cYes">Delete</button></div></div></div>
+<div class="toasts" id="toasts"></div>
+<div class="boot" id="boot"><div class="spin"></div></div>
+
+<script type="module" src="/admin/admin.js"></script>
+</body>
+</html>

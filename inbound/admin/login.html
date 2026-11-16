@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Staff sign-in — Amja</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="login">
+  <div class="login-art" aria-hidden="true">
+    <svg viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg>
+    <p>One panel for <b>Amja Tours</b> and <b>Amja Travels</b>.</p>
+  </div>
+  <form class="login-card" id="loginForm">
+    <h1>Staff sign-in</h1>
+    <p class="muted">Manage both websites, the tour planner and every enquiry.</p>
+    <label>Email<input type="email" id="email" autocomplete="username" required></label>
+    <label>Password<input type="password" id="password" autocomplete="current-password" required></label>
+    <button class="abtn primary" type="submit" id="go">Sign in</button>
+    <p class="login-err" id="err" hidden></p>
+    <a class="muted small" href="/">← Back to the website</a>
+  </form>
+<script type="module">
+import { auth } from '/assets/js/firebase.js';
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+const err = document.getElementById('err'), go = document.getElementById('go');
+const show = m => { err.textContent = m; err.hidden = !m; };
+onAuthStateChanged(auth, async u => {
+  if (!u) return;
+  const t = await u.getIdTokenResult(true);
+  if (t.claims.admin === true) location.replace('/admin/index.html');
+  else { show('This account is not an administrator. Ask the owner to grant admin access.'); signOut(auth); }
+});
+document.getElementById('loginForm').addEventListener('submit', async e => {
+  e.preventDefault(); show(''); go.disabled = true; go.textContent = 'Signing in…';
+  try { await signInWithEmailAndPassword(auth, email.value.trim(), password.value); }
+  catch (ex) { show(ex.code === 'auth/invalid-credential' || ex.code === 'auth/wrong-password' ? 'Email or password is incorrect.' : ex.message); }
+  finally { go.disabled = false; go.textContent = 'Sign in'; }
+});
+</script>
+</body>
+</html>

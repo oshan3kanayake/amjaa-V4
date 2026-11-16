@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air tickets from Colombo — Amja Travels, IATA accredited</title>
+<meta name="description" content="Book air tickets from Sri Lanka to anywhere with Amja Travels — every major airline compared and issued by our IATA-accredited Colombo team.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/outbound.css">
+<script>document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},4000)</script>
+</head>
+<body>
+<div class="curtain"><svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
+<div id="layout-top"></div>
+<main>
+  <section class="phero">
+    <div class="phero-media"><img src="images/photo/flight-hero.jpg" alt="A jet above the clouds at sunset" data-hero-img></div>
+    <div class="phero-in">
+      <div><p class="eyebrow">Air tickets · <span data-site="brand">Amja Travels</span></p><h1 class="h-xl" data-split="now">Any airline. <em>Any city. One desk.</em></h1></div>
+      <div class="phero-side"><p>We compare every major airline, hold the best fare and issue your ticket from our IATA-accredited office in Colombo 12 — and when plans change, a real person sorts it out.</p><div class="phero-scroll"><i></i>Fill your boarding pass</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="enquire">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Request a fare</p><h2 class="h-md" data-split>Fill in your <em>boarding pass.</em></h2></div><p class="lead" data-fade style="max-width:38ch">We reply with the best options and exact prices — usually within the hour in office time. Nothing is charged until you confirm.</p></div>
+      <div class="tk" id="tk" data-fade>
+        <div class="tk-main">
+          <div class="tk-trip" id="tkTrip" role="tablist"><i></i><button type="button" class="on" data-trip="Return">Return</button><button type="button" data-trip="One way">One way</button><button type="button" data-trip="Multi-city">Multi-city</button></div>
+          <form class="form" data-enquiry="flights" id="tkForm">
+            <span class="enq-chip" hidden></span>
+            <input type="hidden" name="trip_type" value="Return" id="tripType">
+            <div class="tk-od">
+              <div class="field"><input name="from" id="tkFrom" list="airports" placeholder=" " value="CMB" required autocomplete="off"><label>From</label></div>
+              <button type="button" class="tk-swap" id="tkSwap" aria-label="Swap from and to"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h13l-4-4M17 17H4l4 4"/></svg></button>
+              <div class="field"><input name="to" id="tkTo" list="airports" placeholder=" " required autocomplete="off"><label>To (city or code)</label></div>
+            </div>
+            <datalist id="airports"><option value="CMB">Colombo</option><option value="DXB">Dubai</option><option value="AUH">Abu Dhabi</option><option value="DOH">Doha</option><option value="JED">Jeddah</option><option value="MED">Madinah</option><option value="RUH">Riyadh</option><option value="KWI">Kuwait</option><option value="MCT">Muscat</option><option value="BAH">Bahrain</option><option value="MLE">Malé</option><option value="MAA">Chennai</option><option value="DEL">Delhi</option><option value="BOM">Mumbai</option><option value="SIN">Singapore</option><option value="KUL">Kuala Lumpur</option><option value="BKK">Bangkok</option><option value="HKG">Hong Kong</option><option value="PEK">Beijing</option><option value="NRT">Tokyo</option><option value="ICN">Seoul</option><option value="SYD">Sydney</option><option value="MEL">Melbourne</option><option value="LHR">London</option><option value="CDG">Paris</option><option value="FRA">Frankfurt</option><option value="IST">Istanbul</option><option value="ZRH">Zurich</option><option value="FCO">Rome</option><option value="AMS">Amsterdam</option><option value="JFK">New York</option><option value="YYZ">Toronto</option><option value="LAX">Los Angeles</option></datalist>
+            <div class="row"><div class="field"><input name="depart_date" type="text" placeholder=" " onfocus="this.type='date'" required><label>Departing</label></div><div class="field" id="retWrap"><input name="return_date" type="text" placeholder=" " onfocus="this.type='date'"><label>Returning</label></div></div>
+            <div class="row three"><div class="field"><input name="adults" type="number" min="1" value="1" placeholder=" "><label>Adults</label></div><div class="field"><input name="children" type="number" min="0" value="0" placeholder=" "><label>Children</label></div><div class="field"><input name="infants" type="number" min="0" value="0" placeholder=" "><label>Infants</label></div></div>
+            <div class="row"><div class="field"><select name="cabin"><option>Economy</option><option>Premium economy</option><option>Business</option><option>First</option></select></div><div class="field"><input name="airline_pref" placeholder=" "><label>Preferred airline (optional)</label></div></div>
+            <div class="row"><div class="field"><input name="name" placeholder=" " required><label>Passenger name</label></div><div class="field"><input name="phone" type="tel" placeholder=" " required><label>Phone / WhatsApp</label></div></div>
+            <div class="row"><div class="field"><input name="email" type="email" placeholder=" "><label>Email</label></div><div class="field"><select name="country"></select></div></div>
+            <div class="field"><textarea name="message" placeholder=" " style="min-height:80px"></textarea><label>Flexible dates? Extra baggage? Tell us.</label></div>
+            <button class="btn btn-lg btn-accent" type="submit">Request fares <span class="arr">→</span></button>
+            <p class="form-status" role="status"></p>
+          </form>
+        </div>
+        <aside class="tk-stub">
+          <div><span class="mono">PASSENGER</span><b id="stubRoute">CMB → ···</b><span class="mono" id="stubMeta">RETURN · ECONOMY</span></div>
+          <div><span class="mono">ISSUED BY</span><div style="font-weight:800;margin-top:4px" data-site="legalName">Amja Travels (Pvt) Ltd</div><span class="mono">IATA ACCREDITED</span></div>
+          <span class="barcode" aria-hidden="true"></span>
+        </aside>
+        <div class="tk-stamp" id="tkStamp">REQUEST RECEIVED<small>WE'LL CALL YOU SHORTLY</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec board-sec has-stars"><canvas class="starfield"></canvas>
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow" style="color:var(--accent-2)">Popular from Colombo</p><h2 class="h-md" data-split>Tap a route <em>to start.</em></h2></div></div>
+      <div class="board" id="board" data-cursor="Book"></div>
+      <div class="board-foot"><span>GUIDE FARES · TAXES INCLUDED WHERE SHOWN · CONFIRMED AT BOOKING</span><span id="boardClock"></span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Why book with Amja</p><h2 class="h-md" data-split>Cheaper isn't everything. <em>Help is.</em></h2></div></div>
+      <div class="feats" data-stagger>
+        <div class="feat"><span class="n">01</span><h3>IATA accredited</h3><p>Tickets issued directly by us — not resold through layers of middlemen.</p></div>
+        <div class="feat"><span class="n">02</span><h3>Every airline compared</h3><p>Full-service, low-cost and Gulf carriers side by side, with honest advice.</p></div>
+        <div class="feat"><span class="n">03</span><h3>Changes by people</h3><p>Date changes, name corrections and refunds handled by our team, not a chatbot.</p></div>
+        <div class="feat"><span class="n">04</span><h3>Pay in Colombo</h3><p>Pay at our office or by transfer — with a printed itinerary if you'd like one.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+<div id="layout-bottom"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/starfield.js"></script>
+<script type="module" src="assets/js/pages/tickets.js"></script>
+</body>
+</html>

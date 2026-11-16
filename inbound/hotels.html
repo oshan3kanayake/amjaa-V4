@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels in Sri Lanka — handpicked by Amja Tours</title>
+<meta name="description" content="Hotels across Sri Lanka chosen and inspected by Amja Tours — including our own Galaxy Grand Hotel in Nuwara Eliya. Beach resorts, boutique villas and hill-country stays.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/inbound.css">
+<script>document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},4000)</script>
+</head>
+<body>
+<div class="curtain"><svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
+<div id="layout-top"></div>
+
+<main>
+  <section class="phero">
+    <div class="phero-media"><img src="images/photo/hotel-hero.jpg" alt="Resort pool and villas at sunset" data-hero-img></div>
+    <div class="phero-in">
+      <div>
+        <p class="eyebrow">Stays · <span data-site="brand">Amja Tours</span></p>
+        <h1 class="h-xl" data-split="now">Hotels we know <em>by name.</em></h1>
+      </div>
+      <div class="phero-side">
+        <p>Every property here has been visited by our team — including our very own Galaxy Grand in the tea hills. Scroll through, flick through the photos, and ask us anything.</p>
+        <div class="phero-scroll"><i></i>Scroll the reel</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- the client's own hotel — always first, with photos and videos -->
+  <section class="sec ggh" id="ggh"></section>
+
+  <!-- the reel: one hotel per scroll step, photos as a draggable deck -->
+  <section class="reel has-stars" id="reel" aria-label="Hotel showcase"><canvas class="starfield"></canvas>
+    <div class="reel-stage">
+      <div class="reel-info" id="reelInfo"></div>
+      <div class="deck" id="deck" data-cursor="Drag"></div>
+      <span class="reel-num" id="reelNum">01</span>
+    </div>
+    <div class="reel-rail" id="reelRail"></div>
+  </section>
+
+  <!-- every hotel, filterable -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">All stays</p><h2 class="h-md" data-split>Filter by <em>where</em> you'll wake up.</h2></div>
+      </div>
+      <div class="filterbar"><div class="chips" id="cityChips"></div><span class="muted" id="hotelCount"></span></div>
+      <div class="hgrid" id="hotelGrid"></div>
+    </div>
+  </section>
+
+  <!-- enquiry -->
+  <section class="sec" id="enquire" style="padding-top:0">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Reserve a stay</p>
+        <h2 class="h-md" data-split style="margin-top:18px">Tell us your dates. <em>We'll do the rest.</em></h2>
+        <p class="lead" style="margin-top:22px" data-fade>We book directly with each hotel, so rates are honest and changes are easy. Combine a stay with a driver or a full tour and we'll price it all together.</p>
+        <div class="cinfo" data-fade>
+          <a data-site-href="phone" href="#"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small>Call us</small><span data-site="phone"></span></span></a>
+          <a data-site-href="email" href="#"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span><span><small>Email</small><span data-site="email"></span></span></a>
+        </div>
+      </div>
+      <div class="form-card" data-fade>
+        <h3>Hotel enquiry</h3>
+        <p class="muted">No payment needed — we'll reply with availability and a quote.</p>
+        <form class="form" data-enquiry="hotels">
+          <span class="enq-chip" hidden></span>
+          <div class="row"><div class="field"><input name="name" placeholder=" " required><label>Your name</label></div><div class="field"><input name="phone" type="tel" placeholder=" " required><label>Phone / WhatsApp</label></div></div>
+          <div class="row"><div class="field"><input name="email" type="email" placeholder=" "><label>Email</label></div><div class="field"><select name="country"></select></div></div>
+          <div class="row"><div class="field"><input name="check_in" type="text" placeholder=" " onfocus="this.type='date'"><label>Check-in</label></div><div class="field"><input name="nights" type="number" min="1" placeholder=" "><label>Nights</label></div></div>
+          <div class="row"><div class="field"><input name="guests" type="number" min="1" placeholder=" "><label>Guests</label></div><div class="field"><input name="rooms" type="number" min="1" placeholder=" "><label>Rooms</label></div></div>
+          <div class="field"><textarea name="message" placeholder=" "></textarea><label>Anything we should know?</label></div>
+          <button class="btn btn-lg btn-accent" type="submit">Send enquiry <span class="arr">→</span></button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- gallery lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Hotel gallery">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <div class="lb-media" id="lbMedia"><div class="lb-nav"><button id="lbPrev" aria-label="Previous photo">←</button><button id="lbNext" aria-label="Next photo">→</button></div><div class="lb-thumbs" id="lbThumbs"></div></div>
+  <div class="lb-side" id="lbSide"></div>
+</div>
+
+<div id="layout-bottom"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/starfield.js"></script>
+<script type="module" src="assets/js/pages/hotels.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amja Tours — Sri Lanka tours, hotels & car rental · since 1998</title>
+<meta name="description" content="Amja Tours by Amja Travels (Pvt) Ltd — Colombo-based, IATA accredited since 1998. Plan a tailor-made Sri Lanka itinerary in minutes, book handpicked hotels and rent a car with or without a chauffeur.">
+<meta property="og:title" content="Amja Tours — Sri Lanka, the way locals know it">
+<meta property="og:image" content="images/photo/inbound-hero.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/inbound.css">
+<script>document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},4000)</script>
+</head>
+<body class="home loading">
+<div id="load"><canvas id="loadGlobe"></canvas><div class="lc"><div class="lm"></div><div class="lsub">Colombo · Since 1998</div></div><div class="lp">00</div></div>
+<div class="curtain done"<svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
+<div id="layout-top"></div>
+
+<main>
+  <!-- 1 · Video hero (no text, so the film is fully visible) -->
+  <section class="vhero" id="hero" aria-label="Amja video">
+    <video autoplay muted loop playsinline preload="auto" poster="images/photo/flight-hero.jpg"><source src="images/photo/hero-video.mp4" type="video/mp4"></video>
+    <a href="#intro" class="vhero-cue" aria-label="Scroll down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M5 13l7 7 7-7"/></svg></a>
+  </section>
+
+  <!-- 2 · Brand marquee -->
+  <div class="mq" data-marquee data-speed=".7">
+    <div class="mq-track">
+      <span class="mq-item"><b data-site="brand">Amja Tours</b><i class="dot"></i><span class="o">Since <span data-site="since">1998</span></span><i class="dot"></i>IATA accredited<i class="dot"></i><span class="o">Colombo 12</span><i class="dot"></i>Real people, real Sri Lanka<i class="dot"></i></span>
+    </div>
+  </div>
+
+  <!-- 3 · Who we are -->
+  <section class="sec intro" id="intro">
+    <div class="wrap">
+      <div class="intro-grid">
+        <div>
+          <p class="eyebrow">Who we are</p>
+          <p class="intro-big" data-fill id="aboutTitle">A Colombo family business that has been moving people since 1998.</p>
+          <p class="lead" id="aboutText" data-fade></p>
+          <p style="margin-top:30px" data-fade><a href="about.html" class="link-u">Read the Amja story →</a></p>
+        </div>
+        <div class="intro-visual">
+          <div class="intro-photo" data-clip><img src="images/photo/home-who-we-are.jpg" alt="The Amja head office in Colombo 12"></div>
+          <div class="intro-badge" data-fade data-delay=".3">
+            <svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg>
+            <div><b>Est. <span data-site="since">1998</span></b><small>Our own office · Colombo 12</small></div>
+          </div>
+          <svg class="intro-stamp" viewBox="0 0 140 140" aria-hidden="true">
+            <defs><path id="circ" d="M70 70m-54 0a54 54 0 1 1 108 0a54 54 0 1 1-108 0"/></defs>
+            <text><textPath href="#circ">IATA · TAASL · CIVIL AVIATION · LOCAL ·</textPath></text>
+            <circle cx="70" cy="70" r="5" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+  </section>
+
+  <!-- 4 · The island (expert-system teaser, cities are live data) -->
+  <section class="island has-stars" id="island"><canvas class="starfield"></canvas>
+    <div class="island-pin">
+      <div class="island-copy">
+        <p class="eyebrow">The tour planner</p>
+        <h2 class="h-lg">One island. <em>Your</em> route.</h2>
+        <p class="lead">Tell our planner how many nights you have, who's travelling and what you love. It picks the destinations, orders them by real driving distance and prices the whole trip — instantly.</p>
+        <ul class="island-list" id="islandList"></ul>
+        <a href="plan.html" class="btn btn-lg btn-light" data-magnetic>Build my route <span class="arr">→</span></a>
+      </div>
+      <div class="island-map" id="islandMap"></div>
+    </div>
+  </section>
+
+  <!-- 5 · Three ways to travel with us (horizontal scroll) -->
+  <section class="ways" id="ways">
+   <div class="ways-pin">
+    <div class="wrap ways-head">
+      <p class="eyebrow">Everything on the island</p>
+      <h2 class="h-lg" data-split style="margin-top:14px;max-width:20ch">Three ways we <em>look after</em> you.</h2>
+    </div>
+    <div class="ways-track" id="waysTrack">
+      <a class="way" href="plan.html" data-cursor="Plan">
+        <img src="images/service-inbound.jpg" alt="Sigiriya at sunrise">
+        <div class="way-in"><span class="way-n">01</span><div><h3>A tour, planned in minutes</h3><p>Our planner builds a day-by-day route and a live price. A real person then fine-tunes it with you.</p></div><span class="btn">Plan a trip →</span></div>
+      </a>
+      <a class="way" href="hotels.html" data-cursor="Stay">
+        <img src="images/photo/hotel-hero.jpg" alt="Resort pool at sunset">
+        <div class="way-in"><span class="way-n">02</span><div><h3>Hotels we know by name</h3><p>From our own Galaxy Grand in the tea hills to boutique coast villas — every stay is one we've inspected.</p></div><span class="btn">See hotels →</span></div>
+      </a>
+      <a class="way" href="rent-a-car.html" data-cursor="Drive">
+        <img src="images/photo/fleet-hero-new.jpg" alt="Amja chauffeur fleet">
+        <div class="way-in"><span class="way-n">03</span><div><h3>Rent a car — or a driver</h3><p>Self-drive in the city, or a chauffeur-guide who knows every short-cut from Kandy to Yala.</p></div><span class="btn">Rent a car →</span></div>
+      </a>
+    </div>
+   </div>
+  </section>
+
+  <!-- 6 · Featured stays (live) -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Stays we know personally</p><h2 class="h-md" data-split>Handpicked, <em>inspected</em>, loved.</h2></div>
+        <a href="hotels.html" class="btn btn-ghost" data-magnetic>All hotels <span class="arr">→</span></a>
+      </div>
+      <div class="stays" id="featuredStays"></div>
+    </div>
+  </section>
+
+  <!-- 7 · Why Amja -->
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Why travellers choose Amja</p><h2 class="h-md" data-split>Not a booking site. <em>A family business.</em></h2></div></div>
+      <div class="why" data-stagger>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 40V18l16-10 16 10v22"/><path d="M19 40V27h10v13"/></svg><h3>Local since <span data-site="since">1998</span></h3><p>Our office is in Colombo 12. When you call, you reach the people who plan your trip.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="20" r="11"/><path d="m17 29-4 13 11-5 11 5-4-13"/></svg><h3>Properly accredited</h3><p>IATA accredited, TAASL members and approved by the Civil Aviation Authority.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 30h36l-4-10H10z"/><circle cx="14" cy="34" r="4"/><circle cx="34" cy="34" r="4"/></svg><h3>Your own driver-guide</h3><p>One vehicle, one driver, the whole journey — chosen for your group and your pace.</p></div>
+        <div class="why-i"><svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M38 31v5a3 3 0 0 1-3.3 3A30 30 0 0 1 9 13.3 3 3 0 0 1 12 10h5a3 3 0 0 1 3 2.6l.7 4.4a3 3 0 0 1-.9 2.6l-2 2a24 24 0 0 0 10 10l2-2a3 3 0 0 1 2.6-.9l4.4.7A3 3 0 0 1 38 31z"/></svg><h3>Help, day or night</h3><p>A real phone number with a real person on it while you're on the island.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="layout-bottom"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/js/globe.js"></script>
+<script src="assets/js/starfield.js"></script>
+<script type="module" src="assets/js/pages/home.js"></script>
+</body>
+</html>

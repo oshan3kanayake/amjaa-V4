@@ -1,20 +1,20 @@
 rules_version = '2';
 
 // ─────────────────────────────────────────────────────────────
-// Firestore Security Rules — THIS IS THE BACKEND.
-// No server exists; these rules decide who can do what.
+// Firestore Security Rules — the whole "backend".
+// One project serves BOTH websites (Amja Tours inbound + Amja Travels
+// outbound) and the shared admin panel.
 //
-//   Catalog (tours, hotels, fleet, flights, hajj, umrah):
-//     • anyone may READ   (public website)
-//     • only ADMIN may WRITE (create/update/delete)
+//   Website content (hotels, cars, planner, Hajj, Umrah, flights, settings)
+//     • anyone may READ   (public websites)
+//     • only ADMIN may WRITE
+//   Enquiries (all forms on both sites)
+//     • anyone may CREATE a valid enquiry
+//     • only ADMIN may read / update / delete
 //
-//   Enquiries:
-//     • anyone may CREATE a valid enquiry (the contact forms)
-//     • only ADMIN may READ / update / delete them
-//
-// "Admin" = a signed-in Firebase Auth user with custom claim admin:true.
+// "Admin" = signed-in Firebase Auth user with custom claim admin:true
+// (set once with scripts/set-admin-claim.js).
 // ─────────────────────────────────────────────────────────────
-
 service cloud.firestore {
   match /databases/{database}/documents {
 
@@ -22,35 +22,40 @@ service cloud.firestore {
       return request.auth != null && request.auth.token.admin == true;
     }
 
-    // ── Public catalog collections ──
-    function isCatalog(col) {
+    function isContent(col) {
       return col in [
-        'tour_packages_inbound',
-        'tour_packages_outbound',
-        'hajj_packages',
-        'umrah_packages',
-        'hotels',
-        'fleet',
-        'flights',
-        'flight_destinations',
-        'international_hotels'
+        'hotels', 'fleet', 'expertCities',
+        'hajj_packages', 'umrah_packages', 'flight_deals',
+        // older collections from the first site, kept readable
+        'tour_packages_inbound', 'tour_packages_outbound', 'flights', 'flight_destinations', 'international_hotels'
       ];
     }
 
     match /{col}/{docId} {
-      allow read:  if isCatalog(col);
-      allow write: if isCatalog(col) && isAdmin();
+      allow read:  if isContent(col);
+      allow write: if isContent(col) && isAdmin();
     }
 
-    // ── Enquiries ──
+    // Company & brand + planner rules
+    match /settings/{id} {
+      allow read:  if true;
+      allow write: if isAdmin();
+    }
+
+    // Private admin settings (email keys)
+    match /private/{id} {
+      allow read, write: if isAdmin();
+    }
+
     function validEnquiry() {
-      return request.resource.data.name is string
-          && request.resource.data.name.size() > 0
-          && request.resource.data.phone is string
-          && request.resource.data.phone.size() > 0
-          && request.resource.data.category is string
-          && request.resource.data.read == false
-          && request.resource.data.handled == false;
+      let d = request.resource.data;
+      return d.name is string && d.name.size() > 0 && d.name.size() < 200
+          && d.phone is string && d.phone.size() > 0 && d.phone.size() < 60
+          && d.category is string && d.category.size() < 40
+          && (!('site' in d) || d.site in ['inbound', 'outbound'])
+          && (!('message' in d) || (d.message is string && d.message.size() < 5000))
+          && d.read == false
+          && d.handled == false;
     }
 
     match /enquiries/{id} {

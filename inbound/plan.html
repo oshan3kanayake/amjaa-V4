@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan a Sri Lanka trip in minutes — Amja Tours tour planner</title>
+<meta name="description" content="Answer a few questions and the Amja Tours planner builds a day-by-day Sri Lanka itinerary, maps the driving route and prices the whole trip instantly. For travellers from any country.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant:ital,wght@0,400;0,500;1,400;1,500&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/inbound.css">
+<link rel="stylesheet" href="assets/css/planner.css">
+<script>document.documentElement.classList.add('anim');setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('anim')},4000)</script>
+</head>
+<body class="page-light planner-page">
+<div class="curtain"><svg class="mark" viewBox="0 0 104 64"><path d="M4 60 31 5l27 55" fill="none" stroke="currentColor" stroke-width="7.5"/><path d="M19 60 31 36l12 24" fill="none" stroke="currentColor" stroke-width="6"/><path d="M52 8h48M76 8v52" fill="none" stroke="currentColor" stroke-width="8"/></svg></div>
+<div id="layout-top"></div>
+
+<main>
+  <section class="pl-intro">
+    <div class="wrap pl-intro-grid">
+      <div>
+        <p class="eyebrow">The <span data-site="brand">Amja Tours</span> planner</p>
+        <h1 class="h-xl" data-split="now">Your Sri Lanka, <em>planned in minutes.</em></h1>
+      </div>
+      <div class="pl-intro-side" data-fade data-delay=".4">
+        <p class="lead">Eight quick questions. Our planner chooses the places, orders them by real driving distance and prices every night, meal and kilometre — using our live rates. Then a real person at our Colombo office polishes it with you.</p>
+        <ul class="pl-pills"><li>No sign-up</li><li>Any nationality</li><li>Live rates</li><li>Route map + PDF</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="pl" id="planner">
+    <div class="wrap pl-grid" id="plannerCard">
+      <!-- left rail -->
+      <aside class="pl-rail">
+        <div class="pl-progress"><i id="plBar"></i></div>
+        <ol class="pl-steps" id="plSteps"></ol>
+        <div class="pl-summary" id="plSummary"></div>
+      </aside>
+
+      <!-- question panel -->
+      <form class="pl-panel" id="plForm" novalidate>
+        <header class="pl-head">
+          <span class="pl-count"><b id="plNum">01</b>/<span id="plTotal">08</span></span>
+          <h2 id="plTitle">How many nights do you have?</h2>
+          <p id="plHelp" class="muted"></p>
+        </header>
+
+        <div class="pl-body">
+          <fieldset class="pl-step" data-step="1">
+            <div class="opt-grid nights" id="nightCards"></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="2" hidden>
+            <div class="counters">
+              <div class="counter"><div><b>Adults</b><small>13 years and over</small></div><div class="cnt"><button type="button" data-cnt="adults" data-d="-1" aria-label="Fewer adults">−</button><output id="adultsOut">2</output><button type="button" data-cnt="adults" data-d="1" aria-label="More adults">+</button></div></div>
+              <div class="counter"><div><b>Children</b><small>0 – 12 years</small></div><div class="cnt"><button type="button" data-cnt="children" data-d="-1" aria-label="Fewer children">−</button><output id="childrenOut">0</output><button type="button" data-cnt="children" data-d="1" aria-label="More children">+</button></div></div>
+            </div>
+            <div class="child-ages" id="childAges" hidden><p class="muted">Children's ages help us choose rooms and car seats.</p><div class="ages" id="agesGrid"></div></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="3" hidden>
+            <div class="opt-grid budgets" id="budgetCards"></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="4" hidden>
+            <p class="pl-sub">Accommodation style</p>
+            <div class="opt-grid tiers" id="tierCards"></div>
+            <p class="pl-sub" style="margin-top:28px">Meal plan</p>
+            <div class="opt-row" id="mealCards"></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="5" hidden>
+            <div class="limit-banner"><span>Choose up to <b id="maxCities">3</b></span><small>destinations for a <b id="maxDays">7</b>-night trip · <span id="pickedCount">0</span> chosen</small></div>
+            <div class="city-grid" id="cityGrid"></div>
+            <div class="pl-hotels" id="hotelPick" hidden>
+              <p class="pl-sub">Want a particular hotel? <span class="muted">(optional)</span></p>
+              <div id="hotelGroups"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="6" hidden>
+            <p class="pl-sub">Arriving at</p>
+            <div class="opt-row" id="arrivalCards"></div>
+            <p class="pl-sub" style="margin-top:28px">Flying home from</p>
+            <div class="opt-row" id="departureCards"></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="7" hidden>
+            <p class="pl-sub">Pace</p>
+            <div class="opt-row" id="paceCards"></div>
+            <p class="pl-sub" style="margin-top:28px">What do you love? <span class="muted">(choose any)</span></p>
+            <div class="chips interest-chips" id="interestChips"></div>
+            <div class="field" style="margin-top:28px"><textarea id="extraNotes" placeholder=" "></textarea><label>Special requests — diet, mobility, celebrations…</label></div>
+          </fieldset>
+
+          <fieldset class="pl-step" data-step="8" hidden>
+            <div class="review" id="review"></div>
+            <p class="muted" style="margin-top:18px;font-size:.88rem">Nothing personal is needed to see your plan — only trip preferences.</p>
+          </fieldset>
+        </div>
+
+        <p class="pl-error" id="plError" role="alert" hidden></p>
+        <footer class="pl-foot">
+          <button type="button" class="btn btn-ghost" id="plBack" hidden>← Back</button>
+          <span style="flex:1"></span>
+          <button type="button" class="btn" id="plNext" data-magnetic>Continue <span class="arr">→</span></button>
+          <button type="submit" class="btn btn-accent btn-lg" id="plGo" hidden data-magnetic>Build my journey <span class="arr">→</span></button>
+        </footer>
+      </form>
+    </div>
+
+    <!-- building overlay -->
+    <div class="pl-building" id="plBuilding" hidden>
+      <div class="pl-building-in"><div class="pl-building-map" id="buildMap"></div><p id="buildMsg">Reading your answers…</p></div>
+    </div>
+
+    <!-- result -->
+    <section class="res wrap" id="result" hidden>
+      <header class="res-head">
+        <div>
+          <p class="eyebrow">Your route proposal</p>
+          <h2 class="h-lg" id="resTitle">Your Sri Lanka</h2>
+        </div>
+        <span class="res-badge" id="resBadge">Live road route</span>
+      </header>
+      <div class="res-stats">
+        <div><small>Estimated total</small><b id="resTotal">—</b><span id="resTotalFx"></span></div>
+        <div><small>Per person</small><b id="resPP">—</b><span id="resPPFx"></span></div>
+        <div><small>Driving</small><b id="resKm">—</b><span>kilometres</span></div>
+        <div><small>Time on the road</small><b id="resTime">—</b><span>approx.</span></div>
+      </div>
+      <p class="res-note" id="resNote"></p>
+      <div class="res-body">
+        <ol class="days" id="resDays"></ol>
+        <div class="res-map-wrap">
+          <div class="res-map" id="resMap"></div>
+          <ol class="res-stops" id="resStops"></ol>
+        </div>
+      </div>
+      <details class="res-break">
+        <summary>How this price is made <span>+</span></summary>
+        <table id="resItems"></table>
+        <p class="muted" style="font-size:.85rem;margin-top:12px">A planning estimate from our current rates. Your coordinator confirms final hotels and prices before anything is booked.</p>
+      </details>
+      <div class="res-actions">
+        <button class="btn btn-accent btn-lg" id="resBook" data-magnetic>Send this to Amja <span class="arr">→</span></button>
+        <button class="btn btn-ghost btn-lg" id="resPdf">Download PDF</button>
+        <button class="btn btn-ghost btn-lg" id="resRestart">Start over</button>
+      </div>
+    </section>
+  </section>
+
+  <section class="sec" id="enquire">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow">Book with a person</p>
+        <h2 class="h-md" data-split style="margin-top:18px">Happy with the route? <em>Let's make it real.</em></h2>
+        <p class="lead" style="margin-top:22px" data-fade>Send your plan (or just an idea) and a coordinator from our Colombo office will reply with confirmed hotels, a final price and anything we'd tweak.</p>
+        <div class="cinfo" data-fade>
+          <a data-site-href="whatsapp" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></span><span><small>WhatsApp</small><span data-site="phone2"></span></span></a>
+          <a data-site-href="email" href="#"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span><span><small>Email</small><span data-site="email"></span></span></a>
+        </div>
+      </div>
+      <div class="form-card" data-fade>
+        <h3>Tour enquiry</h3>
+        <p class="muted">Your generated plan is attached automatically.</p>
+        <form class="form" data-enquiry="planner" id="planEnquiry">
+          <span class="enq-chip" hidden></span>
+          <div class="row"><div class="field"><input name="name" placeholder=" " required><label>Your name</label></div><div class="field"><input name="phone" type="tel" placeholder=" " required><label>Phone / WhatsApp</label></div></div>
+          <div class="row"><div class="field"><input name="email" type="email" placeholder=" "><label>Email</label></div><div class="field"><select name="country"></select></div></div>
+          <div class="row"><div class="field"><input name="travel_dates" placeholder=" "><label>Travel dates</label></div><div class="field"><input name="travellers" type="number" min="1" placeholder=" "><label>Travellers</label></div></div>
+          <div class="field"><textarea name="message" placeholder=" "></textarea><label>Message</label></div>
+          <button class="btn btn-lg btn-accent" type="submit">Send enquiry <span class="arr">→</span></button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="layout-bottom"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script type="module" src="assets/js/planner/planner.js"></script>
+</body>
+</html>

@@ -1,18 +1,28 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      "**/*.rules",
-      "scripts/**",
-      "*.md"
-    ],
-    "rewrites": [],
-    "cleanUrls": true,
-    "trailingSlash": false
-  },
+  "hosting": [
+    {
+      "target": "inbound",
+      "public": "inbound",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "headers": [
+        { "source": "**/*.@(html|js|css)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "**/*.@(jpg|jpeg|png|webp|mp4|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+      ]
+    },
+    {
+      "target": "outbound",
+      "public": "outbound",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "headers": [
+        { "source": "**/*.@(html|js|css)", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+        { "source": "**/*.@(jpg|jpeg|png|webp|mp4|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+      ]
+    }
+  ],
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"

@@ -1,5 +1,13 @@
 {
   "projects": {
     "default": "amjaa-travels"
+  },
+  "targets": {
+    "amjaa-travels": {
+      "hosting": {
+        "inbound": ["amjaa-travels"],
+        "outbound": ["amjaa-travels-outbound"]
+      }
+    }
   }
 }
